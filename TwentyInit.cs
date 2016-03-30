@@ -4,6 +4,9 @@ using System.Collections;
 public class TwentyInit : MonoBehaviour
 {
     //Input parameter for velocity and angularVelocity of drones
+    public float GAIN_K1;
+    public float GAIN_K2;
+    public float GAIN_Gamma;
     public Vector3 Velocity1;
     public Vector3 AngularVelocity1;
     public Vector3 Velocity2;
@@ -67,8 +70,39 @@ public class TwentyInit : MonoBehaviour
     public Rigidbody drone19;
     public Rigidbody drone20;
 
+    public static float k1;
+    public static float k2;
+    public static float gamma;
+
     void Start()
     {
+        //Setting gain for K1 
+        if (GAIN_K1 == 0)
+        {
+            k1 = 2.0f;
+        }
+        else {
+            k1 = GAIN_K1;
+        }
+
+        //Setting the gain for K2
+        if (GAIN_K2 == 0)
+        {
+            k2 = 0.1f;
+        }
+        else {
+            k2 = GAIN_K2;
+        }
+
+        //Setting the value for Gamma
+        if (GAIN_Gamma == 0)
+        {
+            gamma = 30.0f;
+        }
+        else {
+            gamma = GAIN_Gamma;
+        }
+
         //Setting the velocity of drones
         drone1.velocity = Velocity1;
         drone2.velocity = Velocity2;
